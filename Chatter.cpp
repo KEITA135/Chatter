@@ -28,74 +28,90 @@ int main(){
     bool exit = false;
     while(!exit){
         cout << "何するわけ？" << endl;
-        cout << "(しりとり:1,会話:2,終了:3):";
+        cout << "(ゲーム:1,会話:2,終了:3):";
         string x;
         cin >> x;
         if(x=="1"){
-            set<string> shiritori,said;
-            for(auto i : words) shiritori.insert(i);
-            vector<pair<string,bool>> shiri(0);
-            for(auto i : shiritori) shiri.push_back({i,false});
-            cout << "じゃあ俺からな" << endl;
+            while(!exit){
+                cout << "で、何のゲームをしたいん？" << endl;
+                cout << "(しりとり:1,オセロ:2,ゲームしない:3):";
+                string y;
+                cin >> y;
+                if(y=="1"){
+                    set<string> shiritori,said;
+                    for(auto i : words) shiritori.insert(i);
+                    vector<pair<string,bool>> shiri(0);
+                    for(auto i : shiritori) shiri.push_back({i,false});
+                    cout << "じゃあ俺からな" << endl;
 
-            string before;
-            char atama;
-            char tail;
-            for(int i = 0;i < shiri.size();i++){
-                if(shiri[i].first[shiri[i].first.size()-1]=='n') continue;
-                cout << "チャットマン:" << shiri[i].first << endl;
-                shiri[i].second = true;
-                before = shiri[i].first;
-                atama = shiri[i].first[shiri[i].first.size()-1];
-                break;
-            }
-
-            int winner = -1;        //1->AI負け,2->AI勝ち
-            while(winner==-1){
-                string str;
-                cout << name << ':';
-                cin >> str;
-                if(str[0]!=atama){
-                    falsein(exit);
-                    if(exit) break;
-                    cout << "再開するぞ。おまえの番だ。" << before << "だからな。" << endl;
-                    continue;
-                }
-                said.insert(str);
-                tail = str[str.size()-1];
-
-                if(tail=='n'){
-                    cout << "あれ???nじゃね????" << endl;
-                    winner = 2;
-                }
-                else{
-                    string ans = "null";
+                    string before;
+                    char atama;
+                    char tail;
                     for(int i = 0;i < shiri.size();i++){
-                        if((shiri[i].first[0]!=tail)||shiri[i].second||said.count(shiri[i].first)) continue;
-                        ans = shiri[i].first;
+                        if(shiri[i].first[shiri[i].first.size()-1]=='n') continue;
+                        cout << "チャットマン:" << shiri[i].first << endl;
                         shiri[i].second = true;
+                        before = shiri[i].first;
+                        atama = shiri[i].first[shiri[i].first.size()-1];
                         break;
                     }
-                    if(ans=="null"){
-                        cout << "くそっ、思いつかねえ..." << endl;
-                        winner = 1;
-                    }
-                    else{
-                        cout << "チャットマン:" << ans << endl;
-                        if(ans[ans.size()-1]=='n'){
-                            cout << "ん？nで終わってるじゃん" << endl;
-                            winner = 1;
+
+                    int winner = -1;        //1->AI負け,2->AI勝ち
+                    while(winner==-1){
+                        string str;
+                        cout << name << ':';
+                        cin >> str;
+                        if(str[0]!=atama){
+                            falsein(exit);
+                            if(exit) break;
+                            cout << "再開するぞ。おまえの番だ。" << before << "だからな。" << endl;
+                            continue;
+                        }
+                        said.insert(str);
+                        tail = str[str.size()-1];
+
+                        if(tail=='n'){
+                            cout << "あれ???nじゃね????" << endl;
+                            winner = 2;
                         }
                         else{
-                            atama = ans[ans.size()-1];
-                            before = ans;
+                            string ans = "null";
+                            for(int i = 0;i < shiri.size();i++){
+                                if((shiri[i].first[0]!=tail)||shiri[i].second||said.count(shiri[i].first)) continue;
+                                ans = shiri[i].first;
+                                shiri[i].second = true;
+                                break;
+                            }
+                            if(ans=="null"){
+                                cout << "くそっ、思いつかねえ..." << endl;
+                                winner = 1;
+                            }
+                            else{
+                                cout << "チャットマン:" << ans << endl;
+                                if(ans[ans.size()-1]=='n'){
+                                    cout << "ん？nで終わってるじゃん、やべ" << endl;
+                                    winner = 1;
+                                }
+                                else{
+                                    atama = ans[ans.size()-1];
+                                    before = ans;
+                                }
+                            }
                         }
                     }
+                    if(!exit){
+                        if(winner==1) cout << "死ねーー死ね死ね" << name << "死ねーー" << endl;
+                        if(winner==2) cout << "はい、乙ーー乙乙" << name << "乙ーー(あー泣いてもいいんだよ?????)" << endl;
+                    }
                 }
-            }
-            if(!exit){
-                if(winner==1) cout << "はい、死ねーー死ね死ね" << name << "死ねーー" << endl;
-                if(winner==2) cout << "はい、乙ーー乙乙" << name << "乙ーー(あー泣いてもいいんだよ?????)" << endl;
+                else if(y=="2"){
+                    cout << "(現在作成中です。)" << endl;
+                }
+                else if(y=="3"){
+                    cout << "は？wwwwま、いいけど。" << endl;
+                    break;
+                }
+                else falsein(exit);
             }
         }
         else if(x=="2"){
