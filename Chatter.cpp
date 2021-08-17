@@ -34,7 +34,7 @@ int main(){
         if(x=="1"){
             while(!exit){
                 cout << "で、何のゲームをしたいん？" << endl;
-                cout << "(しりとり:1,オセロ:2,ゲームしない:3):";
+                cout << "(しりとり:1,オセロ:2,ゲームやめる:3):";
                 string y;
                 cin >> y;
                 if(y=="1"){
@@ -67,6 +67,11 @@ int main(){
                             cout << "再開するぞ。おまえの番だ。" << before << "だからな。" << endl;
                             continue;
                         }
+                        if(said.count(str)){
+                            cout << "は?それ前に出た言葉だけど？？" << endl;
+                            cout << "やりなおせカス" << endl;
+                            continue;
+                        }
                         said.insert(str);
                         tail = str[str.size()-1];
 
@@ -95,6 +100,7 @@ int main(){
                                 else{
                                     atama = ans[ans.size()-1];
                                     before = ans;
+                                    said.insert(ans);
                                 }
                             }
                         }
