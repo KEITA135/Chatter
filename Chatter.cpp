@@ -2,8 +2,8 @@
 using namespace std;
 
 //しりとり言葉。nullは予約語。
-vector<string> words = {"apple","android","age","agency","bean","ball","basketball","chocolate","clone","crane","crime","destiny","diamond","dog","end","empire","finland","flow","find","glory","goal","germany","hill","hack","hat","intelligence","internet","ignore","jail","journal","japan","kick","knowledge","king","london","lock","logic","money","monster","minecraft","name","needle","night","orange","orbit","opportunity","purple","penguin","people","query","quiet","quiz","question","rock","robbin","ring","strawberry","student","stand"
-                    ,"train","traffic","tumor","table","tea","trouble","technology","university","universe","union","vally","violin","wish","wisdom","world","yellow","yell","yawn","young","zero"};
+vector<string> words = {"apple","android","age","agency","aisle","army","bean","ball","basketball","bit","bound","chocolate","clone","crane","crime","chrome","child","destiny","diamond","dog","dark","dilligent","drawn","deck","end","empire","estimate","finland","flow","find","finish","fast","glory","goal","germany","gain","gas","hill","hack","hat","hint","hall","intelligence","internet","india","immigrant","ignore","jail","journal","japan","jastice","kick","knowledge","king","korea","london","lock","logic","money","monster","minecraft","ministry","mother","name","needle","night","norway","nap","orange","orbit","opportunity","othero","old","purple","penguin","people","push","poison","pupil","query","quiet","quiz","question","rock","robbin","ring","read","rabit","road","resort","strawberry","spot","swing","student","stand","shark","shrine"
+                    ,"train","traffic","tumor","table","tea","trouble","technology","tennis","top","thread","university","universe","union","vally","violin","victim","wish","wisdom","world","yellow","yell","yawn","young","zero"};
 
 void falsein(bool &exit){
     cout << "死ね、言われたとおりにしろやカス" << endl;
